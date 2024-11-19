@@ -128,7 +128,7 @@ export default function Home() {
           <div className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
             <h2 className="text-3xl font-extrabold text-black sm:text-4xl">
               <span className="block">Hola, Bienvenido</span>
-              <span className="block text-indigo-400">
+              <span className="block text-purple-400">
                 Comprueba tu estado de animo
               </span>
               <span className="block text-indigo-500">
