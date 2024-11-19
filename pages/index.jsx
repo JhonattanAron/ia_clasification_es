@@ -15,7 +15,6 @@ export default function Home() {
         setPercentage((prev) => {
           if (prev >= 100) {
             clearInterval(interval);
-            setLoading(false); // Detiene el estado de carga
             return 100;
           }
           return prev + 1;
@@ -98,10 +97,9 @@ export default function Home() {
       return;
     }
     setTextoVacion(false);
-    setLoading(true);
+    setLoading(true); // Activa el estado de carga
 
-    // Simular el delay para la barra de progreso
-    setTimeout(async () => {
+    try {
       const fecthPreict = await fetch(api, {
         method: "POST",
         headers: {
@@ -113,7 +111,12 @@ export default function Home() {
       const json = await fecthPreict.json();
       setEstadoAnimo(json.label);
       setResponse(json.label);
-    }, 5000); // Coincidir con la duración de la barra de progreso
+    } catch (error) {
+      console.error("Error al obtener la respuesta:", error);
+      // Manejar error si la API no responde
+    } finally {
+      setLoading(false); // Detiene el estado de carga solo cuando haya respuesta o error
+    }
   };
 
   return (
