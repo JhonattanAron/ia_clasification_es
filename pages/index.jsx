@@ -89,7 +89,7 @@ export default function Home() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const api = "http://localhost:8000/predict";
+    const api = "https://ai-textcl-fastapi.onrender.com/predict";
     const text = event.target.text.value;
 
     if (!text) {
